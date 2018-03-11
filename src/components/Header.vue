@@ -35,23 +35,23 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
-a:hover {
-  margin-top: 1px;
-}
-a:active {
-  margin-top: 3px;
-}
 li {
   list-style-type: none;
   background-color: #fff;
-  color: #000;
   width: 14vw;
   height: 42px;
   padding-top: 6px;
   border: solid 3px #6699cc;
-  border-radius: 8%;
+  border-radius: 10px 10px;
   font-size: 36px;
   font-family: "gooddog-new";
   color: #6699cc;
+}
+li:hover {
+  border-top: solid 4px #6699cc;
+  border-bottom: solid 2px #6699cc;
+}
+li:active {
+  background-color: #fcfcfc;
 }
 </style>
