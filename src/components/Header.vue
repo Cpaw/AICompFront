@@ -28,7 +28,7 @@
 import axios from 'axios'
 
 export const HTTP = axios.create({
-  baseURL: `http://203.104.200.123:8080/`
+  baseURL: `http://203.104.200.123:8080/api/v1/`
 })
 </script>
 <style scoped>
