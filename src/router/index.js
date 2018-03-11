@@ -25,8 +25,8 @@ export default new Router({
       component: Ranking
     },
     {
-      path: '/signout',
-      name: 'signout',
+      path: '/auth',
+      name: 'auth',
       component: Signout
     }
   ]

@@ -17,8 +17,8 @@
         </router-link>
       </a>
       <a>
-        <router-link tag="li" :to="{ path: '/signout'}">
-          Signout
+        <router-link tag="li" :to="{ path: '/auth'}">
+          Auth
         </router-link>
       </a>
     </nav>
@@ -30,6 +30,8 @@ import axios from 'axios'
 export const HTTP = axios.create({
   baseURL: `http://203.104.200.123:8080/api/v1/`
 })
+export default {
+}
 </script>
 <style scoped>
 nav {
