@@ -24,7 +24,13 @@
     </nav>
   </header>
 </template>
+<script>
+import axios from 'axios'
 
+export const HTTP = axios.create({
+  baseURL: `http://203.104.200.123:8080/`
+})
+</script>
 <style scoped>
 nav {
   display: flex;
