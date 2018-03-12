@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Problems from '@/components/Problems'
 import Ranking from '@/components/Ranking'
-import Signout from '@/components/Signout'
+import Auth from '@/components/Auth'
 
 Vue.use(Router)
 
@@ -27,7 +27,7 @@ export default new Router({
     {
       path: '/auth',
       name: 'auth',
-      component: Signout
+      component: Auth
     }
   ]
 })
