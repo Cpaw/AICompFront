@@ -5,7 +5,7 @@
       <form v-on:submit.prevent="Signin">
         <div class="field">
           <p>Name</p>
-          <input class="name" type="text" name="name" placeholder="name" v-model="signin.name">
+          <input class="name" type="text" name="username" placeholder="name" v-model="signin.username">
         </div>
         <div class="field">
           <p>Pass</p>
@@ -22,7 +22,7 @@
       <form v-on:submit.prevent="Signup">
         <div class="field">
           <p>Name</p>
-          <input class="name" type="text" name="name" placeholder="name" v-model="signup.name">
+          <input class="name" type="text" name="username" placeholder="name" v-model="signup.username">
         </div>
         <div class="field">
           <p>Pass</p>
@@ -43,11 +43,11 @@ export default {
   data () {
     return {
       signin: {
-        name: '',
+        username: '',
         password: ''
       },
       signup: {
-        name: '',
+        username: '',
         password: ''
       }
     }
