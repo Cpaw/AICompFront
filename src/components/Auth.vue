@@ -52,19 +52,30 @@ export default {
       }
     }
   },
+  mounted () {
+    HTTP.get('signin')
+      .then(response => {
+        HTTP.defaults.headers.common['Authorization'] = response.headers.authorization
+      })
+  },
   methods: {
     Signin: function () {
       HTTP.post('signin',
         this.$data.signin,
         {
-          headers: {'Content-Type': 'application/json'},
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': HTTP.defaults.headers.common['Authorization']
+          },
           withCredentials: true
         })
         .then(response => {
+          HTTP.defaults.headers.common['Authorization'] = response.headers.authorization
           this.$router.push('/problems')
         })
         .catch(e => {
           document.getElementById('error_code').innerHTML = '<p>Invalid input data.</p>'
+          HTTP.defaults.headers.common['Authorization'] = null
         })
     },
     Signup: function () {

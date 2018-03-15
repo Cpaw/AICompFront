@@ -9,6 +9,11 @@
 import Header from './components/Header'
 export default {
   name: 'App',
+  data () {
+    return {
+      token: ''
+    }
+  },
   components: {
     Header
   }
