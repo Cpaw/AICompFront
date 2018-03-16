@@ -34,7 +34,12 @@ export default {
     }
   },
   created () {
-    HTTP.get(`ranking`)
+    HTTP.get(`ranking`,
+      {
+        headers: {
+          'Authorization': localStorage.getItem('token')
+        }
+      })
       .then(response => {
         this.users = response.data
       })

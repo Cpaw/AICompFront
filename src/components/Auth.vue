@@ -55,7 +55,7 @@ export default {
   mounted () {
     HTTP.get('signin')
       .then(response => {
-        HTTP.defaults.headers.common['Authorization'] = response.headers.authorization
+        localStorage.setItem('token', response.headers.authorization)
       })
   },
   methods: {
@@ -65,30 +65,35 @@ export default {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': HTTP.defaults.headers.common['Authorization']
+            'Authorization': localStorage.getItem('token')
           },
           withCredentials: true
         })
         .then(response => {
-          HTTP.defaults.headers.common['Authorization'] = response.headers.authorization
+          localStorage.setItem('token', response.headers.authorization)
           this.$router.push('/problems')
         })
         .catch(e => {
+          localStorage.setItem('token', '')
           document.getElementById('error_code').innerHTML = '<p>Invalid input data.</p>'
-          HTTP.defaults.headers.common['Authorization'] = null
         })
     },
     Signup: function () {
       HTTP.post('signup',
         this.$data.signup,
         {
-          headers: {'Content-Type': 'application/json'},
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token')
+          },
           withCredentials: true
         })
         .then(response => {
+          localStorage.setItem('token', response.headers.authorization)
           this.$router.push('/')
         })
         .catch(e => {
+          localStorage.setItem('token', '')
           document.getElementById('error_code').innerHTML = '<p>Invalid input data.</p>'
         })
     }

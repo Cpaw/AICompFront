@@ -22,11 +22,11 @@ export default {
     HTTP.get(`challenges`,
       {
         headers: {
-          'Authorization': HTTP.defaults.headers.common['Authorization']
+          'Authorization': localStorage.getItem('token')
         }
       })
       .then(response => {
-        HTTP.defaults.headers.common['Authorization'] = response.$parent.token
+        this.$data.challenges = response.data
       })
       .catch(e => {
         this.errors.push(e)
