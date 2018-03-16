@@ -10,10 +10,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(user, index) in users" :key="index">
+          <tr v-for="user in users" :key="user.rank">
             <th>{{user.name}}</th>
             <th>{{user.score}}</th>
-            <th>{{user.ranking}}</th>
+            <th>{{user.rank}}</th>
           </tr>
         </tbody>
       </table>
@@ -28,7 +28,7 @@ export default {
       users: [{
         name: '',
         score: '',
-        ranking: ''
+        rank: ''
       }],
       errors: []
     }
