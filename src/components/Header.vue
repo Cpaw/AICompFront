@@ -2,17 +2,17 @@
   <header>
     <nav>
       <a>
-        <router-link tag="li" :to="{ path: '/'}">
+        <router-link tag="li" :to="{ name: 'home'}">
           Home
         </router-link>
       </a>
       <a>
-        <router-link tag="li" :to="{ path: '/problems'}">
-          Problems
+        <router-link tag="li" :to="{ name: 'challenges'}">
+          Challenges
         </router-link>
       </a>
       <a>
-        <router-link tag="li" :to="{ path: '/ranking'}">
+        <router-link tag="li" :to="{ name: 'ranking'}">
           Ranking
         </router-link>
       </a>

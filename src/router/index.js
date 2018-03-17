@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Problems from '@/components/Problems'
+import Challenges from '@/components/Challenges'
+import Challenge from '@/components/Challenge'
 import Ranking from '@/components/Ranking'
 import Auth from '@/components/Auth'
 
@@ -23,7 +24,7 @@ export default new Router({
       path: '/challenge/:challenge_id',
       name: 'challenge',
       component: Challenge
-    }
+    },
     {
       path: '/ranking',
       name: 'ranking',

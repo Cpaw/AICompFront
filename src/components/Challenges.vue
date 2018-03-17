@@ -2,7 +2,7 @@
   <article>
     <section>
       <ul>
-        <li v-for="challenge in challenges" :key="challenge.id">{{ challenge.title }}</li>
+        <router-link v-for="challenge in challenges" :key="challenge.id" :to="{ path: 'challenge/' + challenge.id}"><li>{{ challenge.title }}</li></router-link>
       </ul>
     </section>
   </article>

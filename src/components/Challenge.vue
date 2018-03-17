@@ -1,13 +1,15 @@
 <template>
   <article>
+    <h2>{{ challenge.title }}</h2>
     <section>
+      <p>{{ challenge.questiontext }}</p>
     </section>
   </article>
 </template>
 <script>
 import {HTTP} from './Header'
 
-export defalt {
+export default {
   data () {
     return {
       challenge: {
@@ -19,6 +21,17 @@ export defalt {
         Weight: ''
       }
     }
+  },
+  created () {
+    HTTP.get(`challenges` + this.$route.params.challenge_id,
+      {
+        headers: {
+          'Authorization': localStorage.getItem('token')
+        }
+      })
+      .then(response => {
+        this.$data.challenges = response.data.results
+      })
   }
 }
 </script>
