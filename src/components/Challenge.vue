@@ -23,14 +23,14 @@ export default {
     }
   },
   created () {
-    HTTP.get(`challenges` + this.$route.params.challenge_id,
+    HTTP.get(`challenges/` + this.$route.params.challenge_id,
       {
         headers: {
           'Authorization': localStorage.getItem('token')
         }
       })
       .then(response => {
-        this.$data.challenges = response.data.results
+        this.$data.challenge = response.data.results.challenge
       })
   }
 }

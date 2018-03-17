@@ -71,7 +71,7 @@ export default {
         })
         .then(response => {
           localStorage.setItem('token', response.headers.authorization)
-          this.$router.push('/problems')
+          this.$router.push('/challenges')
         })
         .catch(e => {
           localStorage.setItem('token', '')
