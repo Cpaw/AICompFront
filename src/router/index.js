@@ -15,10 +15,15 @@ export default new Router({
       component: Home
     },
     {
-      path: '/problems',
-      name: 'problems',
-      component: Problems
+      path: '/challenges',
+      name: 'challenges',
+      component: Challenges
     },
+    {
+      path: '/challenge/:challenge_id',
+      name: 'challenge',
+      component: Challenge
+    }
     {
       path: '/ranking',
       name: 'ranking',

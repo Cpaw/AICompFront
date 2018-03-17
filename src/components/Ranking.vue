@@ -10,8 +10,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="user in users" :key="user.rank">
-            <th>{{user.name}}</th>
+          <tr v-for="user in ranking" :key="user.rank">
+            <th>{{user.username}}</th>
             <th>{{user.score}}</th>
             <th>{{user.rank}}</th>
           </tr>
@@ -25,11 +25,11 @@ import {HTTP} from './Header'
 export default {
   data () {
     return {
-      users: [{
-        name: '',
+      ranking: {
+        username: '',
         score: '',
         rank: ''
-      }],
+      },
       errors: []
     }
   },
@@ -41,7 +41,7 @@ export default {
         }
       })
       .then(response => {
-        this.users = response.data
+        this.$data.ranking = response.data.results.ranking
       })
       .catch(e => {
         this.errors.push(e)

@@ -2,7 +2,7 @@
   <article>
     <section>
       <ul>
-        <li v-for="(challenge, index) in challenges" :key="index">{{ challenge.name }}</li>
+        <li v-for="challenge in challenges" :key="challenge.id">{{ challenge.title }}</li>
       </ul>
     </section>
   </article>
@@ -13,9 +13,14 @@ import {HTTP} from './Header'
 export default {
   data () {
     return {
-      challenges: [{
-        title: ''
-      }]
+      challenges: {
+        id: 0,
+        title: '',
+        created_at: '',
+        updated_at: '',
+        questiontext: '',
+        Weight: ''
+      }
     }
   },
   created () {
@@ -26,7 +31,7 @@ export default {
         }
       })
       .then(response => {
-        this.$data.challenges = response.data
+        this.$data.challenges = response.data.results.challenges
       })
       .catch(e => {
         this.errors.push(e)
