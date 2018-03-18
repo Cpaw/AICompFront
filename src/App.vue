@@ -11,11 +11,25 @@ export default {
   name: 'App',
   data () {
     return {
-      token: ''
+      isSignedin: false
     }
   },
   components: {
     Header
+  },
+  watch: {
+    '$route' () {
+      this.check()
+    }
+  },
+  method: {
+    check: function () {
+      Header.HTTP.get('role')
+        .then(response => {
+          console.log(response.data)
+          this.$data.isSignedin = false
+        })
+    }
   }
 }
 </script>

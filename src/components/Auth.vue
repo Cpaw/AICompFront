@@ -1,6 +1,6 @@
 <template>
   <article>
-    <section class="signin">
+    <section class="signin" v-if="!isSignedin">
       <h2>Signin</h2>
       <form v-on:submit.prevent="Signin">
         <div class="field">
@@ -17,9 +17,9 @@
       </form>
       <div id="error_code"></div>
     </section>
-    <section class="signup">
+    <section class="signup" v-if="!isSignedin">
       <h2>Signup</h2>
-      <form v-on:submit.prevent="Signup">
+      <form v-on:submit.prevent="!Signup">
         <div class="field">
           <p>Name</p>
           <input class="name" type="text" name="username" placeholder="name" v-model="signup.username">
@@ -33,6 +33,9 @@
         </div>
       </form>
       <div id="error_code"></div>
+    </section>
+    <section v-if="isSignedin">
+      <a><h2 @click="Signout">Signout</h2></a>
     </section>
   </article>
 </template>
@@ -49,13 +52,25 @@ export default {
       signup: {
         username: '',
         password: ''
-      }
+      },
+      isSignedin: false
     }
   },
   mounted () {
-    HTTP.get('signin')
+    HTTP.get('role',
+      {
+        headers: {
+          'Authorization': localStorage.getItem('token')
+        }
+      })
       .then(response => {
-        localStorage.setItem('token', response.headers.authorization)
+        this.$data.isSignedin = true
+      })
+      .catch(e => {
+        HTTP.get('signin')
+          .then(response => {
+            localStorage.setItem('token', response.headers.authorization)
+          })
       })
   },
   methods: {
@@ -95,6 +110,18 @@ export default {
         .catch(e => {
           localStorage.setItem('token', '')
           document.getElementById('error_code').innerHTML = '<p>Invalid input data.</p>'
+        })
+    },
+    Signout: function () {
+      HTTP.delete('signin',
+        {
+          headers: {
+            'Authorization': localStorage.getItem('token')
+          }
+        })
+        .then(response => {
+          localStorage.setItem('token', '')
+          this.$router.push('/')
         })
     }
   }
