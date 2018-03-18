@@ -16,7 +16,7 @@
           Ranking
         </router-link>
       </a>
-      <a>
+      <a v-if="!isSignedin">
         <router-link tag="li" :to="{ path: '/auth'}">
           Auth
         </router-link>
@@ -32,6 +32,21 @@ export const HTTP = axios.create({
 })
 
 export default {
+  mounted () {
+    this.isSignedin()
+  },
+  method: {
+    isSignedin: function () {
+      HTTP.get('users')
+        .then(response => {
+          console.log(response.data)
+        })
+      if (localStorage.getItem('token') === '') {
+        return false
+      }
+      return true
+    }
+  }
 }
 </script>
 <style scoped>
