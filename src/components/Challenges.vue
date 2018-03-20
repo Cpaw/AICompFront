@@ -1,13 +1,13 @@
 <template>
-  <article>
-    <section v-if="isSignedIn">
+  <article v-if="isSignedIn">
+    <section>
       <ul>
         <router-link v-for="challenge in challenges" :key="challenge.id" :to="{ path: 'challenge/' + challenge.id}"><li>{{ challenge.title }}</li></router-link>
       </ul>
     </section>
-    <section class="error" v-else>
-      <h2>ログインしてください</h2>
-    </section>
+  </article>
+  <article v-else>
+    <h2>ログインしてください</h2>
   </article>
 </template>
 <script>
@@ -35,6 +35,7 @@ export default {
         }
       })
       .then(response => {
+        this.$data.isSignedIn = true        
         this.$data.challenges = response.data.results.challenges
       })
       .catch(e => {

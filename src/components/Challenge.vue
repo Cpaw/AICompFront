@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article v-if="isSignedIn">
     <h2>{{ challenge.title }}</h2>
     <section>
       <p>{{ challenge.questiontext }}</p>
@@ -13,6 +13,9 @@
         <br>
         <button @click="upload" type="submit">Submit</button>
       </section>
+  </article>
+  <article v-else>
+    <h2>ログインしてください</h2>
   </article>
 </template>
 <script>
@@ -29,10 +32,11 @@ export default {
         questiontext: '',
         Weight: ''
       },
-      uploadFile: null
+      uploadFile: null,
+      isSignedIn: false
     }
   },
-  created () {
+  mounted () {
     HTTP.get(`challenges/` + this.$route.params.challenge_id,
       {
         headers: {
@@ -40,7 +44,11 @@ export default {
         }
       })
       .then(response => {
+        this.$data.isSignedIn = true
         this.$data.challenge = response.data.results.challenge
+      })
+      .catch(e => {
+        this.$data.isSignedIn = false
       })
   },
   methods: {
@@ -73,3 +81,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+h2 {
+  font-family: "a-otf-ud-shin-maru-go-pr6n";
+  font-size: 42px;
+}
+</style>
