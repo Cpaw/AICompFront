@@ -35,7 +35,7 @@ export default {
         }
       })
       .then(response => {
-        this.$data.isSignedIn = true        
+        this.$data.isSignedIn = true
         this.$data.challenges = response.data.results.challenges
       })
       .catch(e => {

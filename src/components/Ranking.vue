@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article v-if="isSignedIn">
     <section>
       <table>
         <thead>
@@ -19,6 +19,9 @@
       </table>
     </section>
   </article>
+  <article v-else>
+    <h2>ログインしてください</h2>
+  </article>
 </template>
 <script>
 import {HTTP} from './Header'
@@ -30,7 +33,7 @@ export default {
         score: '',
         rank: ''
       },
-      errors: []
+      isSignedIn: false
     }
   },
   created () {
@@ -41,11 +44,18 @@ export default {
         }
       })
       .then(response => {
+        this.$data.isSignedIn = true
         this.$data.ranking = response.data.results.ranking
       })
       .catch(e => {
-        this.errors.push(e)
+        this.$data.isSignedIn = false
       })
   }
 }
 </script>
+<style scoped>
+h2 {
+  font-family: "a-otf-ud-shin-maru-go-pr6n";
+  font-size: 42px;
+}
+</style>
