@@ -39,3 +39,38 @@ export default {
   }
 }
 </script>
+<style scoped>
+section {
+  margin: 10vh auto 0 auto;
+  width: 70vw;
+}
+a {
+  text-decoration: none;
+  font-size: 36px;
+}
+ul {
+  padding: 0;
+  margin: 0 auto;
+  width: 35vw;
+}
+ul li {
+  position: relative;
+  list-style-type: none!important;
+  padding: 10px 0 10px 0;
+  margin-bottom: 3vh;
+  line-height: 1.5;
+  background: #6699cc;
+  vertical-align: middle;
+  color: #fff;
+  border-radius: 10px 10px 10px 10px;
+  border: solid 3px #3679ac;
+}
+
+ul li:before{
+  display:inline-block;
+  vertical-align: middle;
+}
+ul li:hover{
+  background: #86b9ec;
+}
+</style>

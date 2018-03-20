@@ -57,7 +57,8 @@ export default {
       HTTP.post('submit', formData,
         {
           headers: {
-            'content-type': 'multipart/form-data'
+            'content-type': 'multipart/form-data',
+            'Authorization': localStorage.getItem('token')
           }
         })
         .then((response) => {
