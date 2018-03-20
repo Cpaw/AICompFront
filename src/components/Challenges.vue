@@ -51,7 +51,7 @@ a {
 ul {
   padding: 0;
   margin: 0 auto;
-  width: 35vw;
+  width: 36vw;
 }
 ul li {
   position: relative;
@@ -59,11 +59,11 @@ ul li {
   padding: 10px 0 10px 0;
   margin-bottom: 3vh;
   line-height: 1.5;
-  background: #6699cc;
+  background: #fff;
   vertical-align: middle;
-  color: #fff;
+  color: #000;
   border-radius: 10px 10px 10px 10px;
-  border: solid 3px #3679ac;
+  border: solid 3px #6699cc;
 }
 
 ul li:before{
@@ -71,6 +71,6 @@ ul li:before{
   vertical-align: middle;
 }
 ul li:hover{
-  background: #86b9ec;
+  background: #fafaff;
 }
 </style>
