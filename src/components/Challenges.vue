@@ -1,9 +1,12 @@
 <template>
   <article>
-    <section>
+    <section v-if="isSignedIn">
       <ul>
         <router-link v-for="challenge in challenges" :key="challenge.id" :to="{ path: 'challenge/' + challenge.id}"><li>{{ challenge.title }}</li></router-link>
       </ul>
+    </section>
+    <section class="error" v-else>
+      <h2>ログインしてください</h2>
     </section>
   </article>
 </template>
@@ -20,10 +23,11 @@ export default {
         updated_at: '',
         questiontext: '',
         Weight: ''
-      }
+      },
+      isSignedIn: false
     }
   },
-  created () {
+  mounted () {
     HTTP.get(`challenges`,
       {
         headers: {
@@ -34,12 +38,16 @@ export default {
         this.$data.challenges = response.data.results.challenges
       })
       .catch(e => {
-        this.errors.push(e)
+        this.$data.isSignedIn = false
       })
   }
 }
 </script>
 <style scoped>
+h2 {
+  font-family: "a-otf-ud-shin-maru-go-pr6n";
+  font-size: 42px;
+}
 section {
   margin: 10vh auto 0 auto;
   width: 70vw;
@@ -66,11 +74,11 @@ ul li {
   border: solid 3px #6699cc;
 }
 
-ul li:before{
+ul li:before {
   display:inline-block;
   vertical-align: middle;
 }
-ul li:hover{
+ul li:hover {
   background: #fafaff;
 }
 </style>

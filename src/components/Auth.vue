@@ -1,6 +1,6 @@
 <template>
   <article>
-    <section class="signin" v-if="!isSignedin">
+    <section class="signin" v-if="!isSignedIn">
       <h2>Signin</h2>
       <form v-on:submit.prevent="Signin">
         <div class="field">
@@ -17,7 +17,7 @@
       </form>
       <div id="error_code"></div>
     </section>
-    <section class="signup" v-if="!isSignedin">
+    <section class="signup" v-if="!isSignedIn">
       <h2>Signup</h2>
       <form v-on:submit.prevent="!Signup">
         <div class="field">
@@ -34,7 +34,7 @@
       </form>
       <div id="error_code"></div>
     </section>
-    <section v-if="isSignedin">
+    <section v-if="isSignedIn">
       <a><h2 @click="Signout">Signout</h2></a>
     </section>
   </article>
@@ -53,7 +53,7 @@ export default {
         username: '',
         password: ''
       },
-      isSignedin: false
+      isSignedIn: false
     }
   },
   mounted () {
@@ -64,7 +64,7 @@ export default {
         }
       })
       .then(response => {
-        this.$data.isSignedin = true
+        this.$data.isSignedIn = true
       })
       .catch(e => {
         HTTP.get('signin')
