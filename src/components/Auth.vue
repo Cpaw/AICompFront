@@ -4,35 +4,51 @@
       <h2>Signin</h2>
       <form v-on:submit.prevent="Signin">
         <div class="field">
-          <label for="username">Name: </label>
-          <input class="name" type="text" name="username" placeholder="name" v-model="signin.username">
+          <div class="label">
+            <label for="username">Name: </label>
+          </div>
+          <div class="input">
+            <input class="name" type="text" name="username" placeholder="name" v-model="signin.username">
+          </div>
         </div>
         <div class="field">
-          <label for="password">Pass: </label>
-          <input class="pass" type="password" name="password" placeholder="password" v-model="signin.password">
+          <div class="label">
+            <label for="password">Pass: </label>
+          </div>
+          <div class="input">
+            <input class="pass" type="password" name="password" placeholder="password" v-model="signin.password">
+          </div>
         </div>
-        <div class="field">
+        <div class="submit">
           <button type="submit">Submit</button>
         </div>
       </form>
-      <div id="error_code"></div>
+      <div class="error" v-if="SignInError">Invalid data</div>
     </section>
     <section class="signup" v-if="!isSignedIn">
       <h2>Signup</h2>
       <form v-on:submit.prevent="!Signup">
         <div class="field">
-          <label for="username">Name: </label>
-          <input class="name" type="text" name="username" placeholder="name" v-model="signup.username">
+          <div class="label">
+            <label for="username">Name: </label>
+          </div>
+          <div class="input">
+            <input class="name" type="text" name="username" placeholder="name" v-model="signup.username">
+          </div>
         </div>
         <div class="field">
-          <label for="password">Pass: </label>
-          <input class="pass" type="password" name="password" placeholder="password" v-model="signup.password">
+          <div class="label">
+            <label for="password">Pass: </label>
+          </div>
+          <div class="input">
+            <input class="pass" type="password" name="password" placeholder="password" v-model="signup.password">
+          </div>
         </div>
-        <div class="field">
+        <div class="submit">
           <button type="submit">Submit</button>
         </div>
       </form>
-      <div id="error_code"></div>
+      <div class="error" v-if="SignUpError">Invalid data</div>
     </section>
     <section v-if="isSignedIn">
       <a><h2 @click="Signout">Signout</h2></a>
@@ -53,7 +69,9 @@ export default {
         username: '',
         password: ''
       },
-      isSignedIn: false
+      isSignedIn: false,
+      SignInError: false,
+      SignUpError: false
     }
   },
   mounted () {
@@ -90,7 +108,7 @@ export default {
         })
         .catch(e => {
           localStorage.setItem('token', '')
-          document.getElementById('error_code').innerHTML = '<p>Invalid input data.</p>'
+          this.$data.SignInError = true
         })
     },
     Signup: function () {
@@ -109,7 +127,7 @@ export default {
         })
         .catch(e => {
           localStorage.setItem('token', '')
-          document.getElementById('error_code').innerHTML = '<p>Invalid input data.</p>'
+          thid.$data.SignUpError = true
         })
     },
     Signout: function () {
@@ -138,9 +156,41 @@ section {
 }
 h2 {
   font-size: 42px;
+  margin-bottom: 8vh;
 }
-h3 {
-  font-size: 36px;
+label {
+  width: 8vw;
+}
+input, button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: "a-otf-ud-shin-maru-go-pr6n";
+  border: solid 2px #6699cc;
+  border-radius: 5px;
+  outline: 0;
+}
+input:focus {
+  border: solid 2px #6699cc;
+  border-radius: 5px;
+}
+button {
+  position: relative;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #6699cc;
+  border: solid 2px #6699cc;
+  font-size: 20px;
+  font-family: "a-otf-ud-shin-maru-go-pr6n";
+  width: 10vw;
+}
+button:hover {
+  cursor: pointer;
+  background: #76a9dc;
+}
+button:active {
+  background: #4679ac;
 }
 .signin {
   background: white;
@@ -159,8 +209,26 @@ h3 {
   border-radius: 10px 10px;
 }
 .field {
-  margin-bottom: 2em;
+  margin: 0 auto 5vh auto;
   padding: 5px;
   font-size: 24px;
+  font-weight: 700;
+  width: 24vw;
+}
+.label {
+  text-align: left;
+}
+.name {
+  font-size: 16px;
+  width: 24vw;
+}
+.pass {
+  font-size: 16px;
+  width: 24vw;
+}
+.error {
+  margin: 2vh auto 2vh auto;
+  font-size: 24px;
+  color: #ff5d86;
 }
 </style>
