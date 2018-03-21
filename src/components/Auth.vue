@@ -27,7 +27,7 @@
     </section>
     <section class="signup" v-if="!isSignedIn">
       <h2>Signup</h2>
-      <form v-on:submit.prevent="!Signup">
+      <form v-on:submit.prevent="Signup">
         <div class="field">
           <div class="label">
             <label for="username">Name: </label>
@@ -118,8 +118,7 @@ export default {
         this.$data.signup,
         {
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('token')
+            'Content-Type': 'application/json'
           },
           withCredentials: true
         })
@@ -148,6 +147,9 @@ export default {
 }
 </script>
 <style scoped>
+h2 {
+  font-size: 48px;
+}
 article {
   display: -webkit-flex;
   display: flex;
@@ -194,7 +196,7 @@ button:active {
 .signin {
   background: white;
   width: 36vw;
-  height: 60vh;
+  height: 55vh;
   margin: 10vh auto 0 10vw;
   border: solid 3.15px #6699cc;
   border-radius: 10px 10px;
@@ -202,7 +204,7 @@ button:active {
 .signup {
   background: white;
   width: 36vw;
-  height: 60vh;
+  height: 55vh;
   margin: 10vh 10vw 0 auto;
   border: solid 3.15px #6699cc;
   border-radius: 10px 10px;
