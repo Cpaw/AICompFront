@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api/v1': {
-        target: 'http://203.104.200.123:8080',
+        target: 'http://ai.cpaw.site:8080',
         changeOrigin: true
       }
     },
