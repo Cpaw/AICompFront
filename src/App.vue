@@ -17,7 +17,7 @@ export default {
 
 <style>
 html {
-  background: url('./assets/background.png');
+  background: url('./assets/background.png') fixed;
   background-size: cover;
 }
 #app {

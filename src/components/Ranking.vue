@@ -61,12 +61,10 @@ h2 {
 table {
   margin: 5vh auto;
   width: 60vw;
-  background: #FFF;
   border-radius: 15px;
 }
 thead {
   font-size: 48px;
-  background: #c6d9ff;
 }
 tbody {
   font-size: 36px;
@@ -74,6 +72,7 @@ tbody {
 th {
   margin: 5vh auto;
   padding: 10px 0.5em 10px 0.5em;
+  border-bottom: 3px solid #6699cc;
 }
 tr {
   margin: 5vh auto 15vh auto;
@@ -92,5 +91,11 @@ tr th:nth-of-type(2) {
 }
 tr td:nth-of-type(2) {
   width: 45%;
+}
+tr th:nth-of-type(3) {
+  width: 30%;
+}
+tr td:nth-of-type(3) {
+  width: 30%;
 }
 </style>

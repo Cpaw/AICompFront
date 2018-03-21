@@ -39,6 +39,7 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 0 10vw;
+
 }
 a {
   text-decoration: none;

@@ -33,6 +33,7 @@ export default {
         Weight: ''
       },
       uploadFile: null,
+      filename: '',
       isSignedIn: false
     }
   },
@@ -82,8 +83,49 @@ export default {
 }
 </script>
 <style scoped>
+article {
+  background: #fff;
+  border-radius: 15px;
+  border: 3px solid #6699cc;
+  width: 70vw;
+  height: 60vh;
+  margin: 10vh auto 0 auto;
+}
 h2 {
   font-family: "a-otf-ud-shin-maru-go-pr6n";
   font-size: 42px;
+}
+p {
+  font-size: 36px;
+  font-family: "a-otf-ud-shin-maru-go-pr6n";
+}
+label {
+  font-family: "a-otf-ud-shin-maru-go-pr6n";
+  font-size: 24px;
+  padding: 0.6em 1.5em 0.6em 1.5em;
+  border: 2px solid #6699cc;
+  border-radius: 15px;
+}
+label:hover {
+  cursor: pointer;
+  background: #fafafa;
+}
+button {
+  position: relative;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #6699cc;
+  border: solid 2px #6699cc;
+  font-size: 20px;
+  font-family: "a-otf-ud-shin-maru-go-pr6n";
+  width: 10vw;
+}
+button:hover {
+  cursor: pointer;
+  background: #76a9dc;
+}
+button:active {
+  background: #4679ac;
 }
 </style>
