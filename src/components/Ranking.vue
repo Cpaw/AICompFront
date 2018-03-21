@@ -4,16 +4,16 @@
       <table>
         <thead>
           <tr>
+            <th>ranking</th>
             <th>name</th>
             <th>score</th>
-            <th>ranking</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="user in ranking" :key="user.rank">
-            <th>{{user.username}}</th>
-            <th>{{user.score}}</th>
-            <th>{{user.rank}}</th>
+            <td>{{user.rank}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.score}}</td>
           </tr>
         </tbody>
       </table>
@@ -57,5 +57,40 @@ export default {
 h2 {
   font-family: "a-otf-ud-shin-maru-go-pr6n";
   font-size: 42px;
+}
+table {
+  margin: 5vh auto;
+  width: 60vw;
+  background: #FFF;
+  border-radius: 15px;
+}
+thead {
+  font-size: 48px;
+  background: #c6d9ff;
+}
+tbody {
+  font-size: 36px;
+}
+th {
+  margin: 5vh auto;
+  padding: 10px 0.5em 10px 0.5em;
+}
+tr {
+  margin: 5vh auto 15vh auto;
+}
+td {
+  padding: 2vh;
+}
+tr th:nth-of-type(1) {
+  width: 25%;
+}
+tr td:nth-of-type(1) {
+  width: 25%;
+}
+tr th:nth-of-type(2) {
+  width: 45%;
+}
+tr td:nth-of-type(2) {
+  width: 45%;
 }
 </style>
