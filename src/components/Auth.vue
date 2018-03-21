@@ -51,7 +51,9 @@
       <div class="error" v-if="SignUpError">Invalid data</div>
     </section>
     <section v-if="isSignedIn">
-      <a><h2 @click="Signout">Signout</h2></a>
+      <div class="signout">
+        <a @click="Signout">Signout</a>
+      </div>
     </section>
   </article>
 </template>
@@ -153,10 +155,7 @@ article {
 section {
   -webkit-justify-content: space-around;
   justify-content: space-around;
-}
-h2 {
-  font-size: 42px;
-  margin-bottom: 8vh;
+  margin: 0 auto;
 }
 label {
   width: 8vw;
@@ -230,5 +229,14 @@ button:active {
   margin: 2vh auto 2vh auto;
   font-size: 24px;
   color: #ff5d86;
+}
+.signout {
+  margin: 15vh auto 10vh auto;
+  font-size: 67px;
+  padding: 0.3em 1em 0.3em 1em;
+  background: #FFF;
+  border: 3px solid #6699cc;
+  border-radius: 5px;
+  cursor: pointer;
 }
 </style>
