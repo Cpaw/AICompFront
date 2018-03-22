@@ -4,15 +4,17 @@
     <section>
       <p class="text">{{ challenge.questiontext }}</p>
     </section>
-      <section class="submit">
-        <label for="csv_file">
-          Select csv file
-          <input @change="selectedFile" type="file" name="file" id="csv_file" style="display:none;">
-        </label>
-        <p>{{ filename }}</p>
-        <br>
-        <button @click="upload" type="submit">Submit</button>
-      </section>
+    <section class="submit">
+      <label for="csv_file">
+        Select csv file
+        <input @change="selectedFile" type="file" name="file" id="csv_file" style="display:none;">
+      </label>
+      <p>{{ filename }}</p>
+      <br>
+      <button @click="upload" type="submit">Submit</button>
+      <div id="result" v-if="isSubmitted"><p>正解率: {{ accuracy }} %</p></div>
+      <div id="error" v-if="isError"><p>ファイル形式が違います。</p></div>
+    </section>
   </article>
   <article v-else>
     <h2>ログインしてください</h2>
@@ -34,7 +36,10 @@ export default {
       },
       uploadFile: null,
       filename: '',
-      isSignedIn: false
+      isSignedIn: false,
+      isSubmitted: false,
+      isError: false,
+      accuracy: 0
     }
   },
   mounted () {
@@ -70,13 +75,12 @@ export default {
             'Authorization': localStorage.getItem('token')
           }
         })
-        .then((response) => {
-          this.$data.result = response.data
-          document.getElementById('result').innerHTML = '<p>Accuracy: ' + this.$data.result.message.slice(0, 6) + '%</p>'
+        .then(response => {
+          this.$data.accuracy = response.data.results.accuracy
+          this.$data.submitted = true
         })
-        .catch((error) => {
-          this.$data.result = error.response.data
-          document.getElementById('error').innerHTML = '<p>' + this.$data.result.message + '</p>'
+        .catch(e => {
+          this.$data.isError = true
         })
     }
   }
@@ -94,7 +98,7 @@ article {
 section {
   width: 55vw;
   margin: 0 auto;
-  height: 15vh;
+  height: 13vh;
 }
 h2 {
   font-family: "a-otf-ud-shin-maru-go-pr6n";
