@@ -2,7 +2,7 @@
   <article v-if="isSignedIn">
     <h2>{{ challenge.title }}</h2>
     <section>
-      <p>{{ challenge.questiontext }}</p>
+      <p class="text">{{ challenge.questiontext }}</p>
     </section>
       <section class="submit">
         <label for="csv_file">
@@ -91,18 +91,20 @@ article {
   height: 60vh;
   margin: 10vh auto 0 auto;
 }
+section {
+  width: 55vw;
+  margin: 0 auto;
+  height: 15vh;
+}
 h2 {
   font-family: "a-otf-ud-shin-maru-go-pr6n";
   font-size: 42px;
-}
-p {
-  font-size: 36px;
-  font-family: "a-otf-ud-shin-maru-go-pr6n";
+  height: 10vh;
 }
 label {
   font-family: "a-otf-ud-shin-maru-go-pr6n";
   font-size: 24px;
-  padding: 0.6em 1.5em 0.6em 1.5em;
+  padding: 0.2em 1.5em;
   border: 2px solid #6699cc;
   border-radius: 15px;
 }
@@ -112,11 +114,12 @@ label:hover {
 }
 button {
   position: relative;
-  padding: 0.25em 0.5em;
+  padding: 0.28em 0.5em;
   text-decoration: none;
   color: #FFF;
   background: #6699cc;
   border: solid 2px #6699cc;
+  border-radius: 5px;
   font-size: 20px;
   font-family: "a-otf-ud-shin-maru-go-pr6n";
   width: 10vw;
@@ -127,5 +130,9 @@ button:hover {
 }
 button:active {
   background: #4679ac;
+}
+.text {
+  font-size: 36px;
+  font-family: "a-otf-ud-shin-maru-go-pr6n";
 }
 </style>
