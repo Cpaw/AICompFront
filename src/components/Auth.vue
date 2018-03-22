@@ -128,7 +128,7 @@ export default {
         })
         .catch(e => {
           localStorage.setItem('token', '')
-          thid.$data.SignUpError = true
+          this.$data.SignUpError = true
         })
     },
     Signout: function () {
