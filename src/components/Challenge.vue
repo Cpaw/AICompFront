@@ -12,6 +12,7 @@
       <p>{{ filename }}</p>
       <br>
       <button @click="upload" type="submit">Submit</button>
+      <div class="spin"></div>
       <div id="result" v-if="isSubmitted"><p>正解率: {{ accuracy }} %</p></div>
       <div id="error" v-if="isError"><p>ファイル形式が違います。</p></div>
     </section>
@@ -66,8 +67,8 @@ export default {
     },
     upload: function () {
       let formData = new FormData()
-      formData.append('file', this.$data.uploadFile)
-      formData.append('id', this.$route.params.challenge_id)
+      formData.append('ansFP', this.$data.uploadFile)
+      formData.append('ChallengeID', this.$route.params.challenge_id)
       HTTP.post('submit', formData,
         {
           headers: {
@@ -138,5 +139,20 @@ button:active {
 .text {
   font-size: 36px;
   font-family: "a-otf-ud-shin-maru-go-pr6n";
+}
+.spin {
+  animation: spin_4780 3.5s linear infinite;
+  transform-origin: 50% 50%;
+}
+@keyframes spin_4780 {
+  0% {
+    transform:rotate(0deg)
+  }
+  42.85714% {
+    transform:rotate(359deg)
+  }
+  100% {
+    transform:rotate(359deg)
+  }
 }
 </style>
