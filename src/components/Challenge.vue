@@ -66,6 +66,7 @@ export default {
       this.$data.filename = files[0].name
     },
     upload: function () {
+      this.$data.submitted = true
       let formData = new FormData()
       formData.append('ansFP', this.$data.uploadFile)
       formData.append('ChallengeID', this.$route.params.challenge_id)
@@ -78,7 +79,7 @@ export default {
         })
         .then(response => {
           this.$data.accuracy = response.data.results.accuracy
-          this.$data.submitted = true
+          this.$data.isSubmitted = true
         })
         .catch(e => {
           this.$data.isError = true
