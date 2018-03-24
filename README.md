@@ -1,6 +1,11 @@
-# aicompfront
+# Cpaw AI competition フロントエンド
 
-> A Vue.js project
+このリポジトリは、Cpaw AI competitionスコアサーバのフロントエンドです。
+
+- Cpawについて→[https://www.cpaw.site](https://www.cpaw.site)
+- 第１回Cpaw AI competition開催レポート→[https://knowledge.sakura.ad.jp/12439](https://knowledge.sakura.ad.jp/12439/)
+- 第2回Cpaw AI competition募集ページ→[https://connpass.com/event/80925/](https://connpass.com/event/80925/)
+
 
 ## Build Setup
 
