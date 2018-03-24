@@ -15,7 +15,7 @@
       <div id="result" v-if="isScored"><p>正解率: {{ accuracy }} %</p></div>
       <div id="error" v-if="isError"><p>ファイル形式が違います。</p></div>
     </section>
-    <div class="loader" v-if="isSubmitted && !isScored">Loading...</div>
+    <div class="loader" v-if="isSubmitted && !(isScored || isError)">Loading...</div>
   </article>
   <article v-else>
     <h2>ログインしてください</h2>
