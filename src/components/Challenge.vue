@@ -14,7 +14,7 @@
       <button @click="upload" type="submit" v-if="!isSubmitted">Submit</button>
       <div class="loader" v-if="isSubmitted && !(isScored || isError)">Loading...</div>
       <div id="result" v-if="isScored"><p>正解率: {{ accuracy }} %</p></div>
-      <div id="error" v-if="isError"><p>ファイル形式が違います。</p></div>
+      <div id="error" v-if="isError"><p>ファイル形式が違うか、解答間隔が短すぎます。</p></div>
     </section>
   </article>
   <article v-else>
