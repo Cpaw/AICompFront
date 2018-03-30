@@ -23,6 +23,7 @@ export default {
   background: white;
   width: 70vw;
   margin: 10vh auto 0 auto;
+  padding: 10px;
   border: solid 3.15px #6699cc;
   border-radius: 10px 10px;
 }
